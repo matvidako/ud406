@@ -3,6 +3,8 @@ package com.udacity.gamedev.ninepatch;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
@@ -17,8 +19,9 @@ public class NinePatchDemo extends ApplicationAdapter {
     FitViewport viewport;
 
     // TODO: Add a Texture for the raw platform image
-
+    Texture platformTexture;
     // TODO: Add a NinePatch
+    NinePatch platformNinePatch;
 
     @Override
     public void create() {
@@ -26,10 +29,10 @@ public class NinePatchDemo extends ApplicationAdapter {
         viewport = new FitViewport(WORLD_SIZE, WORLD_SIZE);
 
         // TODO: Load the platform texture (Look for the file in android/assets)
-
+        platformTexture = new Texture("platform.png");
 
         // TODO: Initialize the NinePatch using the texture and the EDGE constant
-
+        platformNinePatch = new NinePatch(platformTexture, EDGE, EDGE, EDGE, EDGE);
     }
 
     @Override
@@ -48,13 +51,13 @@ public class NinePatchDemo extends ApplicationAdapter {
         batch.begin();
 
         // TODO: Draw the platform texture at TEST_SIZE_1
-
+        batch.draw(platformTexture, 0, TEST_SIZE_2, TEST_SIZE_1, TEST_SIZE_1);
         // TODO: Draw the platform texture at TEST_SIZE_2
-
+        batch.draw(platformTexture, TEST_SIZE_1, TEST_SIZE_2, TEST_SIZE_2, TEST_SIZE_2);
         // TODO: Draw the nine patch at TEST_SIZE_1
-
+        platformNinePatch.draw(batch, 0, 0, TEST_SIZE_1, TEST_SIZE_1);
         // TODO: Draw the nine patch at TEST_SIZE_2
-
+        platformNinePatch.draw(batch, TEST_SIZE_1, 0, TEST_SIZE_2, TEST_SIZE_2);
         batch.end();
     }
 
@@ -62,7 +65,7 @@ public class NinePatchDemo extends ApplicationAdapter {
     public void dispose() {
         batch.dispose();
         // TODO: Dispose of the texture
-
+        platformTexture.dispose();
 
     }
 }
