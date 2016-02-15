@@ -45,7 +45,11 @@ public class Constants {
     public static final String ENEMY_SPRITE = "enemy";
     public static final Vector2 ENEMY_CENTER = new Vector2(14, 22);
     public static final float ENEMY_MOVEMENT_SPEED = 10;
+
+    // TODO: Add ENEMY_BOB_AMPLITUDE constant! 2 works well.
     public static final float ENEMY_BOB_AMPLITUDE = 2;
+
+    // TODO: Add ENEMY_BOB_PERIOD constant. About 3 seconds works fine.
     public static final float ENEMY_BOB_PERIOD = 3.0f;
 
 }

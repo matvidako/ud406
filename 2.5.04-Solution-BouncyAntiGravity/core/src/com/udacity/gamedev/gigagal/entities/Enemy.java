@@ -16,12 +16,16 @@ public class Enemy {
     private final Platform platform;
     public Vector2 position;
     private Direction direction;
+
+    // TODO: Add start time
     final long startTime;
 
     public Enemy(Platform platform) {
         this.platform = platform;
         direction = Direction.RIGHT;
         position = new Vector2(platform.left, platform.top + Constants.ENEMY_CENTER.y);
+
+        // TODO: Set start time
         startTime = TimeUtils.nanoTime();
     }
 
@@ -42,8 +46,15 @@ public class Enemy {
             direction = Direction.LEFT;
         }
 
+
+        // TODO: Figure out where in the bob cycle we're at
+        // bobMultiplier = 1 + sin(2 PI elapsedTime / period)
         final float elapsedTime = Utils.secondsSince(startTime);
         final float bobMultiplier = 1 + MathUtils.sin(MathUtils.PI2 * elapsedTime / Constants.ENEMY_BOB_PERIOD);
+
+        // TODO: Set the enemy vertical position
+        // y = platformTop + enemyCenter + bobAmplitude * bobMultiplier
+
         position.y = platform.top + Constants.ENEMY_CENTER.y + Constants.ENEMY_BOB_AMPLITUDE * bobMultiplier;
     }
 

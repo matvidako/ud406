@@ -86,6 +86,9 @@ public class GigaGal {
 
         // Collide with enemies
 
+        // TODO: Define GigaGal bounding rectangle
+        // Use GigaGal's constants for height and stance width
+
         Rectangle gigaGalBounds = new Rectangle(
                 position.x - Constants.GIGAGAL_STANCE_WIDTH / 2,
                 position.y - Constants.GIGAGAL_EYE_HEIGHT,
@@ -93,12 +96,18 @@ public class GigaGal {
                 Constants.GIGAGAL_HEIGHT);
 
         for (Enemy enemy : level.getEnemies()) {
+            // TODO: Define enemy bounding rectangle
+            // You'll want to define an enemy collision radius constant
             Rectangle enemyBounds = new Rectangle(
                     enemy.position.x - Constants.ENEMY_COLLISION_RADIUS,
                     enemy.position.y - Constants.ENEMY_COLLISION_RADIUS,
                     2 * Constants.ENEMY_COLLISION_RADIUS,
                     2 * Constants.ENEMY_COLLISION_RADIUS
             );
+
+            // TODO: If GigaGal overlaps an enemy, log the direction from which she hit it
+            // Use Rectangle.overlaps() to make it easy!
+
             if (gigaGalBounds.overlaps(enemyBounds)) {
                 if (position.x < enemy.position.x) {
                     Gdx.app.log(TAG, "Hit an enemy from the left");

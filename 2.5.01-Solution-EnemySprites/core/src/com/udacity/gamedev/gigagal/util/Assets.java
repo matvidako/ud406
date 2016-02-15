@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.utils.Array;
-import com.sun.media.jfxmediaimpl.MediaDisposer.Disposable;
+import com.badlogic.gdx.utils.Disposable;
 
 
 public class Assets implements Disposable, AssetErrorListener {
@@ -20,6 +20,8 @@ public class Assets implements Disposable, AssetErrorListener {
 
     public GigaGalAssets gigaGalAssets;
     public PlatformAssets platformAssets;
+
+    // TODO: Add EnemyAssets member (defined at the bottom of the file. Start there)
     public EnemyAssets enemyAssets;
 
     private AssetManager assetManager;
@@ -37,6 +39,8 @@ public class Assets implements Disposable, AssetErrorListener {
         TextureAtlas atlas = assetManager.get(Constants.TEXTURE_ATLAS);
         gigaGalAssets = new GigaGalAssets(atlas);
         platformAssets = new PlatformAssets(atlas);
+
+        // TODO: Initialize enemyAssets
         enemyAssets = new EnemyAssets(atlas);
     }
 
@@ -102,9 +106,11 @@ public class Assets implements Disposable, AssetErrorListener {
 
     public class EnemyAssets {
 
+        // TODO: Add AtlasRegion for the enemy
         public final AtlasRegion enemy;
 
         public EnemyAssets(TextureAtlas atlas) {
+            // TODO: Save the enemy sprite
             enemy = atlas.findRegion(Constants.ENEMY_SPRITE);
         }
     }

@@ -13,17 +13,20 @@ import com.udacity.gamedev.gigagal.util.Utils;
 
 public class Enemy {
 
+    final long startTime;
     private final Platform platform;
     public Vector2 position;
+    // TODO: Add heath counter
     public int health;
     private Direction direction;
-    final long startTime;
 
     public Enemy(Platform platform) {
         this.platform = platform;
         direction = Direction.RIGHT;
         position = new Vector2(platform.left, platform.top + Constants.ENEMY_CENTER.y);
         startTime = TimeUtils.nanoTime();
+
+        // TODO: Initialize enemy health
         health = Constants.ENEMY_HEALTH;
     }
 

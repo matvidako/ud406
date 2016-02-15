@@ -21,6 +21,8 @@ public class Level {
     private GigaGal gigaGal;
     private Array<Platform> platforms;
     private DelayedRemovalArray<Enemy> enemies;
+
+    // TODO: Add a DelayedRemovalArray of bullets
     private DelayedRemovalArray<Bullet> bullets;
 
 
@@ -35,8 +37,12 @@ public class Level {
 
         // BULLET STORM!
 
+        // TODO: Spawn a bullet in a random direction, at a random position
+        // At a position within some reasonable rectangle
+        // You'll want to complete the spawnBullet() method below first
+
         Direction direction;
-        if (MathUtils.randomBoolean()){
+        if (MathUtils.randomBoolean()) {
             direction = Direction.RIGHT;
         } else {
             direction = Direction.LEFT;
@@ -49,14 +55,11 @@ public class Level {
         spawnBullet(position, direction);
 
 
-        bullets.begin();
+        // TODO: Update the bullets
         for (Bullet bullet : bullets) {
             bullet.update(delta);
-            if (!bullet.active) {
-                bullets.removeValue(bullet, false);
-            }
         }
-        bullets.end();
+
 
         // Update Enemies
         for (int i = 0; i < enemies.size; i++) {
@@ -78,6 +81,7 @@ public class Level {
 
         gigaGal.render(batch);
 
+        // TODO: Render the bullets
         for (Bullet bullet : bullets) {
             bullet.render(batch);
         }
@@ -89,7 +93,10 @@ public class Level {
         gigaGal = new GigaGal(new Vector2(15, 40), this);
 
         platforms = new Array<Platform>();
+
+        // TODO: Initialize bullets array
         bullets = new DelayedRemovalArray<Bullet>();
+
         enemies = new DelayedRemovalArray<Enemy>();
 
         platforms.add(new Platform(15, 100, 30, 20));
@@ -128,6 +135,7 @@ public class Level {
     }
 
     public void spawnBullet(Vector2 position, Direction direction) {
+        // TODO: Complete this method for adding new bullets to the bullets array
         bullets.add(new Bullet(position, direction));
     }
 
